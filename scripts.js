@@ -32,6 +32,7 @@ const Transaction = {
         Transaction.all.splice(index, 1)
 
         App.reload()
+        
     },
     incomes(){//somar as entradas
         let income = 0;
