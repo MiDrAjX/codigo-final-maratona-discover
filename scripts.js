@@ -1,3 +1,23 @@
+function sairModal1(){
+    let modal = document.querySelector('.modal-overlay')
+    modal.addEventListener('click', e=>{ 
+        if(e.target.id == 'modal-escuro1'){
+            modal.classList.remove('active');
+    }})
+    
+}
+function sairModal2(){
+    let modal = document.querySelector('.modal-overlay-es')
+    modal.addEventListener('click', e=>{ if(e.target.id == 'modal-escuro2'){
+        modal.classList.remove('active');
+    }
+
+        })
+    
+}
+
+
+
 const Modal= {
     open(){//abrir modal: Adicionar a class active ao modal
         document.querySelector('.modal-overlay')
@@ -8,6 +28,17 @@ const Modal= {
         .classList.remove('active');
     }
 }
+const ModalEntrada= {
+    open(){//abrir modal: Adicionar a class active ao modal
+        document.querySelector('.modal-overlay-es')
+        .classList.add('active');
+    },
+    close(){//fechar o modal: remover a class active do modal
+        document.querySelector('.modal-overlay-es')
+        .classList.remove('active');
+    }
+}
+
 const Storage ={
     get(){
         return JSON.parse(localStorage.getItem("dev.finances:transactions"))

@@ -21,21 +21,21 @@
 
             <h2 class="sr-only">Balanço</h2>
 
-            <div class="card">
+            <a href="#" onclick="ModalEntrada.open()"><div class="card entrada">
                 <h3>
                     <span>Entradas</span>
                     <img src="/assets/income.svg" alt="Image de entradas">
                 </h3>
                 <p id="incomeDisplay"></p>
-            </div>
+            </div></a>
 
-            <div class="card">
+            <a href="#" onclick="ModalEntrada.open()"><div class="card saida">
                 <h3>
                     <span>Saidas</span>
                     <img src="/assets/expense.svg" alt="Image de entradas">
                 </h3>
                 <p id="expenseDisplay"></p>
-            </div>
+            </div></a>
 
             <div class="card total">
                 <h3>
@@ -75,7 +75,7 @@
 
     </main>
 
-    <div class="modal-overlay">
+    <div class="modal-overlay" id="modal-escuro1" onclick="sairModal1()">
         <div class="modal">
             <div class="form">
                 <h2>Nova Transação</h2>
@@ -120,6 +120,24 @@
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+    <div class="modal-overlay-es" id="modal-escuro2" onclick="sairModal2()">
+        <div class="modal">
+            <a class="fechar-modal" onclick="ModalEntrada.close()">X</a>
+            <table id="data-table2">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Data</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
         </div>
     </div>
 
