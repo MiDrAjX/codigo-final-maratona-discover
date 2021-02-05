@@ -3,6 +3,7 @@ function sairModal1(){
     modal.addEventListener('click', e=>{ 
         if(e.target.id == 'modal-escuro1'){
             modal.classList.remove('active');
+    
     }})
     
 }
@@ -10,8 +11,12 @@ function sairModal2(){
     let modal = document.querySelector('.modal-overlay-es')
     modal.addEventListener('click', e=>{ if(e.target.id == 'modal-escuro2'){
         modal.classList.remove('active');
+        
     }
-
+    document.querySelector('#data-table2 tbody.income1')
+        .classList.add('inactive');
+        document.querySelector('#data-table2 tbody.expense1')
+        .classList.add('inactive');
         })
     
 }
@@ -28,16 +33,7 @@ const Modal= {
         .classList.remove('active');
     }
 }
-const ModalEntrada= {
-    open(){//abrir modal: Adicionar a class active ao modal
-        document.querySelector('.modal-overlay-es')
-        .classList.add('active');
-    },
-    close(){//fechar o modal: remover a class active do modal
-        document.querySelector('.modal-overlay-es')
-        .classList.remove('active');
-    }
-}
+
 
 const Storage ={
     get(){
@@ -93,7 +89,7 @@ const Transaction = {
 const DOM = {
 
     transactionsContainer: document.querySelector('#data-table tbody'),
-
+    
     addTransaction(transaction, index){
     
         const tr = document.createElement('tr')
@@ -103,7 +99,8 @@ const DOM = {
     },
     innerHTMLTransaction(transaction, index){
         
-        const CSSclass = transaction.amount > 0 ? 'income': 'expense'
+        
+        const CSSclass = transaction.amount > 0 ? "income" : "expense";
 
         const amount= Utils.formatCurrency(transaction.amount)
 
@@ -117,6 +114,17 @@ const DOM = {
         </td>
         
     `
+    var arrayIncome=[]
+    var arrayExpense=[]
+ 
+    if(CSSclass=='income'){
+        arrayIncome.push(html)
+        gerarIncome(arrayIncome);
+    }else{
+        arrayExpense.push(html)
+        gerarExpense(arrayExpense);
+    }
+    
     return html
     },
     updateBalance(){
@@ -129,13 +137,70 @@ const DOM = {
     },
     clearTransactions(){
         DOM.transactionsContainer.innerHTML=""
+    },
+    /*selectTransactions(CSSclass){
+    if(CSSclass =='income'){
+        incomeSelector = document.querySelector('#data-table2 tbody .income1')
+    
+        const tr = document.createElement('tr')
+        tr.innerHTML = DOM.innerHTMLTransaction(transaction)
+        tr.dataset.index= index
+        DOM.incomeSelector.appendChild(tr)
+    }else{
+        expenseSelector = document.querySelector('#data-table2 tbody .expense1')
+        const tr = document.createElement('tr')
+        tr.innerHTML = DOM.innerHTMLTransaction(transaction)
+        tr.dataset.index= index
+        DOM.expenseSelector.appendChild(tr)
     }
+
+}*/
+}
+function gerarIncome(arrayIncome) {
+        
+        arrayIncome.forEach(n=>{
+        let lista = document.querySelector('#data-table2 tbody.income1');
+        lista.innerHTML=""
+        let item = document.createElement('tr')
+        item.innerHTML = n;
+        lista.appendChild(item)
+    })
+
+}
+function gerarExpense(arrayExpense) {
+    
+    arrayExpense.forEach(n=>{
+        let lista = document.querySelector('#data-table2 tbody.expense1');
+        lista.innerHTML=""
+        let item = document.createElement('tr')
+        item.innerHTML = n;
+        lista.appendChild(item)
+    })
+
+}
+const ModalEntrada= {
+    open(){//abrir modal: Adicionar a class active ao modal
+        document.querySelector('.modal-overlay-es')
+        .classList.add('active');
+        document.querySelector('#data-table2 tbody.income1')
+        .classList.remove('inactive');
+        
+    },
+}
+const ModalSaida= {
+    open(){//abrir modal: Adicionar a class active ao modal
+        document.querySelector('.modal-overlay-es')
+        .classList.add('active');
+        document.querySelector('#data-table2 tbody.expense1')
+        .classList.remove('inactive');
+    
+    },
 }
 
 const Utils = {
     formatAmount(value){
-        value= Number(value)*100
-        return value
+        value= value*100;
+        return Math.round(value);
     },
     formatDate(date){
         const splittedDate = date.split("-")

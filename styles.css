@@ -208,7 +208,8 @@ header{
     width: 100%;
     overflow-x: auto;
 }
-#data-table {
+#data-table,
+#data-table2 {
     
     width: 100%;
     border-spacing: 0 0,5rem;
@@ -258,6 +259,9 @@ td.income{
 td.expense{
     color: #e92929;
 }
+table tbody.inactive{
+    display: none;
+}
 /*Modal Nova transação=======================================*/
 .modal-overlay{
     width: 100%;
@@ -287,8 +291,7 @@ td.expense{
     background: #f0f2f5;
     padding: 40px;
     
-    border: 10px solid var(--head);
-    box-shadow: 0 0 0 10px green;
+    
 
     position: relative;
     z-index: 1;
@@ -318,23 +321,6 @@ td.expense{
     visibility: visible;
 }
 
-.fechar-modal{
-    display: flex;
-    position: absolute;
-    top: -30px;
-    right: -30px;
-    width: 40px;
-    height: 40px;
-    border-radius:50%;
-    border: 4px solid green;
-    background: var(--head);
-    align-items: center;
-    justify-content:center;
-    color:white;
-    cursor: pointer;
-    box-shadow: 0 4px 4px 0 rgba(0,0,0, 0.3);
-}
-
 @keyframes modal{
     from {
         opacity: 0;
@@ -349,7 +335,6 @@ td.expense{
 .active .modal {
     animation: modal 0.4s;
 }
-
 
 /*form=======================================*/
 #form{

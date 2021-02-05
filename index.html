@@ -29,7 +29,7 @@
                 <p id="incomeDisplay"></p>
             </div></a>
 
-            <a href="#" onclick="ModalEntrada.open()"><div class="card saida">
+            <a href="#" onclick="ModalSaida.open()"><div class="card saida">
                 <h3>
                     <span>Saidas</span>
                     <img src="/assets/expense.svg" alt="Image de entradas">
@@ -124,7 +124,6 @@
     </div>
     <div class="modal-overlay-es" id="modal-escuro2" onclick="sairModal2()">
         <div class="modal">
-            <a class="fechar-modal" onclick="ModalEntrada.close()">X</a>
             <table id="data-table2">
                 <thead>
                     <tr>
@@ -134,8 +133,11 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-
+                <tbody class="expense1 inactive">
+                
+                </tbody>
+                <tbody class="income1 inactive">
+                
                 </tbody>
             </table>
         </div>
