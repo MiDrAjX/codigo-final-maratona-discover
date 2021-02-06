@@ -81,19 +81,32 @@ const Transaction = {
         return expense;
     },
     total(){// entradas-saída
+        return Transaction.incomes() +  Transaction.expenses();},
+
+    totalColor(){
         
-        return Transaction.incomes() +  Transaction.expenses();}
+        if((Transaction.incomes() + Transaction.expenses())<0){
+            let negativo =document.querySelector('#negativado');
+            negativo.classList.add('negativo');
+            negativo.classList.add('saida');
+        } else{
+            let negativo =document.querySelector('#negativado');
+            negativo.classList.remove('negativo');
+            negativo.classList.remove('saida');
+    }}
 }
 
 
 const DOM = {
 
     transactionsContainer: document.querySelector('#data-table tbody'),
-    
+    arrayIncome:[],
+    arrayExpense:[],
+
     addTransaction(transaction, index){
     
         const tr = document.createElement('tr')
-        tr.innerHTML = DOM.innerHTMLTransaction(transaction)
+        tr.innerHTML = DOM.innerHTMLTransaction(transaction, index)
         tr.dataset.index= index
         DOM.transactionsContainer.appendChild(tr)
     },
@@ -104,25 +117,22 @@ const DOM = {
 
         const amount= Utils.formatCurrency(transaction.amount)
 
-        const html = `
+        const html1 = `
         
         <td class="description">${transaction.description}</td>
         <td class="${CSSclass}">${amount}</td>
         <td class="date">${transaction.date}</td>
-        <td>
-        <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover Transação">
-        </td>
-        
-    `
-    var arrayIncome=[]
-    var arrayExpense=[]
+    `;
+    const html2=`<td><img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover Transação">
+    </td>`;
+    const html = html1+html2;
  
     if(CSSclass=='income'){
-        arrayIncome.push(html)
-        gerarIncome(arrayIncome);
+        DOM.arrayIncome.push(html1)
+        gerarIncome(DOM.arrayIncome);
     }else{
-        arrayExpense.push(html)
-        gerarExpense(arrayExpense);
+        DOM.arrayExpense.push(html1)
+        gerarExpense(DOM.arrayExpense);
     }
     
     return html
@@ -136,45 +146,31 @@ const DOM = {
         .innerHTML = Utils.formatCurrency (Transaction.total())
     },
     clearTransactions(){
-        DOM.transactionsContainer.innerHTML=""
+        DOM.transactionsContainer.innerHTML="";
+        DOM.arrayIncome =[];
+        DOM.arrayExpense =[];
+        
     },
-    /*selectTransactions(CSSclass){
-    if(CSSclass =='income'){
-        incomeSelector = document.querySelector('#data-table2 tbody .income1')
-    
-        const tr = document.createElement('tr')
-        tr.innerHTML = DOM.innerHTMLTransaction(transaction)
-        tr.dataset.index= index
-        DOM.incomeSelector.appendChild(tr)
-    }else{
-        expenseSelector = document.querySelector('#data-table2 tbody .expense1')
-        const tr = document.createElement('tr')
-        tr.innerHTML = DOM.innerHTMLTransaction(transaction)
-        tr.dataset.index= index
-        DOM.expenseSelector.appendChild(tr)
-    }
 
-}*/
 }
 function gerarIncome(arrayIncome) {
-        
-        arrayIncome.forEach(n=>{
-        let lista = document.querySelector('#data-table2 tbody.income1');
-        lista.innerHTML=""
-        let item = document.createElement('tr')
-        item.innerHTML = n;
-        lista.appendChild(item)
-    })
+    let lista = document.querySelector('#data-table2 tbody.income1');
+    lista.innerHTML = "";
 
+    arrayIncome.forEach(n => {
+        let item = document.createElement('tr');
+        item.innerHTML = n;
+        lista.appendChild(item);
+    });
 }
 function gerarExpense(arrayExpense) {
-    
+    let lista = document.querySelector('#data-table2 tbody.expense1');
+    lista.innerHTML='';
+
     arrayExpense.forEach(n=>{
-        let lista = document.querySelector('#data-table2 tbody.expense1');
-        lista.innerHTML=""
-        let item = document.createElement('tr')
+        let item = document.createElement('tr');
         item.innerHTML = n;
-        lista.appendChild(item)
+        lista.appendChild(item);
     })
 
 }
@@ -293,14 +289,18 @@ const Form = {
 
 const App={
     init(){
+        
         Transaction.all.forEach(DOM.addTransaction)
+        
         DOM.updateBalance()
-
+        Transaction.totalColor()
         Storage.set(Transaction.all)
     },
     reload(){
+        
         DOM.clearTransactions()
         App.init()
+
     }
 }
 

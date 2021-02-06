@@ -160,6 +160,9 @@ header{
     background: var(--green);
     color: white;
 }
+.total.negativo{
+    background: var(--red);
+}
 
 .card:after,
 .card:before{
@@ -392,3 +395,24 @@ footer{
         gap: 2rem;
     }
 }
+@media (max-width:auto) {
+    table {
+        display: block;
+        position: relative;
+        width: 100%;
+      }
+      
+ 
+        td,
+        th {
+  height: 35px;
+}
+    
+    tbody {
+    width: auto;
+    height: auto;
+    position: relative;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }}
