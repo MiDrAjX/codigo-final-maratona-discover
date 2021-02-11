@@ -128,10 +128,10 @@ const DOM = {
     const html = html1+html2;
  
     if(CSSclass=='income'){
-        DOM.arrayIncome.push(html1)
+        DOM.arrayIncome.push(html)
         gerarIncome(DOM.arrayIncome);
     }else{
-        DOM.arrayExpense.push(html1)
+        DOM.arrayExpense.push(html)
         gerarExpense(DOM.arrayExpense);
     }
     
