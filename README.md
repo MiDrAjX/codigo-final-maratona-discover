@@ -17,9 +17,8 @@
 
 <br>
 
-<p align="center">
-  ![Alt text](.github/devfinances.gif) / ![](.github/devfinances.gif)
-</p>
+![Alt text](.github/devfinances.gif) / ![](.github/devfinances.gif)
+
 
 ## 🚀 Tecnologias
 
