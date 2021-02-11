@@ -38,7 +38,7 @@ Você pode visualizar o layout do projeto através [desse link](https://www.figm
 
 ## :memo: Licença
 
-O projeto Original está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+O projeto Original está sob a licença MIT.
 
 ---
 
