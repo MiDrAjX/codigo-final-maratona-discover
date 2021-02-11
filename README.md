@@ -17,7 +17,7 @@
 
 <br>
 
-![Alt text](.github/devfinances.gif) / ![](.github/devfinances.gif)
+![Alt text](.github/devfinances.gif)
 
 
 ## 🚀 Tecnologias
@@ -38,8 +38,8 @@ Você pode visualizar o layout do projeto através [desse link](https://www.figm
 
 ## :memo: Licença
 
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+O projeto Original está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
 ---
 
-Feito com ♥ by Rocketseat :wave: [Participe da nossa comunidade!](https://discordapp.com/invite/gCRAFhc)
+Feito com ♥ by Rocketseat Alterado por: Jeison marques :wave: [Participe da nossa comunidade!](https://discordapp.com/invite/gCRAFhc)
